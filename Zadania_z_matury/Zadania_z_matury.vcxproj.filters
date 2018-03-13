@@ -17,6 +17,9 @@
     <Filter Include="Dane zewnętrzne\2014">
       <UniqueIdentifier>{9c529435-7c00-4ae3-bf59-1549751dedbe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dane zewnętrzne\2006">
+      <UniqueIdentifier>{7bea5b0c-8683-41ab-a0d7-9e217035f259}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Index.cpp" />
@@ -29,6 +32,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="matura_2014.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="matura_2006.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -56,6 +62,9 @@
     </Text>
     <Text Include="Dane\2014\NAPIS.TXT">
       <Filter>Dane zewnętrzne\2014</Filter>
+    </Text>
+    <Text Include="Dane\2006\dane.txt">
+      <Filter>Dane zewnętrzne\2006</Filter>
     </Text>
   </ItemGroup>
 </Project>

@@ -113,11 +113,13 @@
     <ClCompile Include="Index.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="matura_2006.h" />
     <ClInclude Include="matura_2011.h" />
     <ClInclude Include="matura_2012.h" />
     <ClInclude Include="matura_2014.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Dane\2006\dane.txt" />
     <Text Include="Dane\2011\liczby.txt" />
     <Text Include="Dane\2012\klucze1.txt" />
     <Text Include="Dane\2012\klucze2.txt" />
