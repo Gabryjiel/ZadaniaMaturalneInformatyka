@@ -37,6 +37,9 @@
     <ClInclude Include="matura_2006.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="matura_2007.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Dane\2011\liczby.txt">

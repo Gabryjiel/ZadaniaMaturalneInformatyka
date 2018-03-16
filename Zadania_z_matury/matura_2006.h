@@ -122,6 +122,7 @@ int matura_2006() {
 	task_a_2006();
 	task_b_2006();
 	task_c_2006();
+	cin.get();
 
 	return 1;
 }
