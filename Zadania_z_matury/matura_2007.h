@@ -1,84 +1,91 @@
 #pragma once
-#include <vector>
 #include <iostream>
 #include <cmath>
 
-struct Liczba {
-	long liczba;
-	bool pierwsza;
-	bool superpierwsza;
-	bool superpierwszaB;
-};
+bool liczb[100001];
 
-vector <Liczba> liczbya;
-
-bool ifPrime(long a) {
-	if (a == 2)
-		return true;
-	else if (a % 2 == 0)
-		return false;
-	else if (a > 2) {
-		for (long i = 3; i < a; i++) {
-			if (a % i == 0)
-				return false;
+int primery() {
+	for (int i = 0; i < sizeof(liczb) / sizeof(bool); i++) {
+		liczb[i] = true;
+		
+		if (i == 2)
+			liczb[2] = 1;
+		else if (i == 1 || i == 0)
+			liczb[1] = 0;
+		else {
+			for (int n = 2; n <= i / 2; n++) {
+				if (i % n == 0) {
+					liczb[i] = false;
+					break;
+				}
+				else if (n == i / 2) {
+					liczb[i] = true;
+				}
+			}
 		}
-		return true;
 	}
+	return 1;
 }
 
-bool ifSuperPrime(long a) {
-	int sum = 0;
-	for (int i = 10; ;) {
-		if (a % i != a) {
-			sum += a % i;
-			a /= 10;
+int tobinary(int x) {
+	int liczba = 0;
+	for (int i = 0; ; i++)
+	{
+		if (x % 2 == 1)
+		{
+			liczba += pow(10, i);
 		}
-		else break;
-	}
 
-	return ifPrime(sum);
-}
+		x = x / 2;
 
-bool ifSuperPrimeB(long a) {
-	long binary = 0;
-	for (int i = 0; ; i++) {
-		if (a % 2 == 1)
-			binary += pow(10, i);
-		a = a / 2;
-		if (a == 0)
+		if (x == 0)
+		{
 			break;
-	}
-
-	int sum = 0;
-	for (int i = 10; ;) {
-		if (binary % i != binary) {
-			sum += binary % i;
-			binary /= 10;
 		}
-		else break;
 	}
-
-	return ifPrime(sum);
+	return liczba;
 }
 
-bool check(long a, long b) {
-	for (long i = a; i <= b; i++) {
-		Liczba temp;
-		temp.liczba = i;
-		temp.pierwsza = ifPrime(i);
-		temp.superpierwsza = ifSuperPrime(i);
-		temp.superpierwszaB = ifSuperPrimeB(i);
-		liczbya.push_back(temp);
-		if (temp.superpierwszaB) 
-			std::cout << i << std::endl;
+int count(int x) {
+	int suma = 0;
+	while (true) {
+		suma += x % 10;
+		if (x < 10) break;
+		else {
+			x = (x - (x % 10)) / 10;
+		}
 	}
-	return 0;
+	return suma;
 }
 
+int task_a_2007(int start, int end) {
+	int counter = 0;
+	for (int i = start; i <= end; i++) {
+		int temp = count(tobinary(i));
+		if (liczb[temp] == 1) counter++;
+	}
+	return counter;
+}
+
+int task_b_2007() {
+	int counter = 0;
+	for (int i = 100; i <= 10000; i++) {
+		int suma = count(i);
+
+		if (liczb[suma] == true)
+			counter++;
+	}
+
+	return counter;
+}
 
 void matura_2007() {
 
-	check(2, 100);
+
+	primery();
+	std::cout << task_a_2007(2, 1000) << ", " << task_a_2007(100, 10000) << ", " << task_a_2007(1000, 100000) << std::endl;
+	std::cout << task_b_2007();
+	std::cin.get();
 
 	std::cout << "a";
 
