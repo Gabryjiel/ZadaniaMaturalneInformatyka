@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cmath>
+#include <Windows.h>
 
 bool liczb[100001];
 
@@ -27,19 +28,17 @@ int primery() {
 	return 1;
 }
 
-int tobinary(int x) {
+int tobinary(int l) {
 	int liczba = 0;
-	for (int i = 0; ; i++)
-	{
-		if (x % 2 == 1)
-		{
-			liczba += pow(10, i);
+	int x = l;
+	for (int i = 0; ; i++) {
+		if (x % 2 == 1) {
+			liczba += 1;
 		}
 
 		x = x / 2;
 
-		if (x == 0)
-		{
+		if (x == 0) {
 			break;
 		}
 	}
@@ -61,8 +60,11 @@ int count(int x) {
 int task_a_2007(int start, int end) {
 	int counter = 0;
 	for (int i = start; i <= end; i++) {
-		int temp = count(tobinary(i));
-		if (liczb[temp] == 1) counter++;
+		int temp = tobinary(i);
+		int temp2 = count(i);
+		if (liczb[temp] == true && liczb[i] == true && liczb[temp2] == true) {
+			counter++;
+		}
 	}
 	return counter;
 }
@@ -79,12 +81,34 @@ int task_b_2007() {
 	return counter;
 }
 
+bool task_c_2007(int start, int end) {
+	long counter = 0;
+
+	for (int i = start; i <= end; i++) {
+		int temp1 = tobinary(i);
+		int temp2 = count(i);
+		if (liczb[i] == true && liczb[temp1] == true && liczb[temp2] == true) {
+			counter += i;
+		}
+	}
+
+	for (int i = 2; ; i++) {
+		if (counter % i == 0) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
 void matura_2007() {
 
-
 	primery();
-	std::cout << task_a_2007(2, 1000) << ", " << task_a_2007(100, 10000) << ", " << task_a_2007(1000, 100000) << std::endl;
-	std::cout << task_b_2007();
+	std::cout << "A: " << task_a_2007(2, 1000) << ", ";
+	std::cout << task_a_2007(100, 10000) << ", ";
+	std::cout << task_a_2007(1000, 100000) << std::endl;
+	std::cout << "B: " << task_b_2007() << std::endl;
+	std::cout << "C: " << task_c_2007(100,10000);
 	std::cin.get();
 
 	std::cout << "a";
