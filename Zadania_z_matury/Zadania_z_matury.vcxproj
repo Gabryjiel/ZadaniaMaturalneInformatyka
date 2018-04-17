@@ -117,6 +117,7 @@
     <ClInclude Include="matura_2007.h" />
     <ClInclude Include="matura_2011.h" />
     <ClInclude Include="matura_2012.h" />
+    <ClInclude Include="matura_2013.h" />
     <ClInclude Include="matura_2014.h" />
   </ItemGroup>
   <ItemGroup>
